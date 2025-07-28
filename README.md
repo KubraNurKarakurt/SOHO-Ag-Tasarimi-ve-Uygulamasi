@@ -28,11 +28,17 @@
 | Finance / HR           | 20   | 192.168.1.64/26      | 192.168.1.126      |
 | Reception / Customer   | 30   | 192.168.1.128/26     | 192.168.1.190      |
 
+## Test ve Doğrulama
+
+- Tüm cihazlar kendi VLAN'ları içerisinde doğru şekilde IP adresi aldı.
+- VLAN’lar arası ping testleri başarılı şekilde tamamlandı.
+- Kablosuz cihazlar Access Point'ler aracılığıyla ağa başarıyla bağlandı.
+
 ## Yapılandırma Adımları
 
-### 1. VLAN Tanımlama
-
 ```bash
+ VLAN Tanımlama
+
 Switch(config)# vlan 10
 Switch(config-vlan)# name Admin_IT
 
@@ -43,9 +49,8 @@ Switch(config)# vlan 30
 Switch(config-vlan)# name CS_Reception
 
 
-### 2. Portları VLAN’lara Atama
+ Portları VLAN’lara Atama
 
-```bash
 Switch(config)# interface range fa0/1-4
 Switch(config-if-range)# switchport mode access
 Switch(config-if-range)# switchport access vlan 10
@@ -59,9 +64,8 @@ Switch(config-if-range)# switchport mode access
 Switch(config-if-range)# switchport access vlan 30
 
 
-### 3. Inter-VLAN Routing (Alt Arayüzler ile)
+ Inter-VLAN Routing (Alt Arayüzler ile)
 
-```bash
 Router(config)# interface g0/0.10
 Router(config-subif)# encapsulation dot1Q 10
 Router(config-subif)# ip address 192.168.1.62 255.255.255.192
@@ -75,9 +79,8 @@ Router(config-subif)# encapsulation dot1Q 30
 Router(config-subif)# ip address 192.168.1.190 255.255.255.192
 
 
-### 4. DHCP Yapılandırması
+ DHCP Yapılandırması
 
-```bash
 Router(config)# ip dhcp pool VLAN10
 Router(dhcp-config)# network 192.168.1.0 255.255.255.192
 Router(dhcp-config)# default-router 192.168.1.62
@@ -91,11 +94,7 @@ Router(dhcp-config)# network 192.168.1.128 255.255.255.192
 Router(dhcp-config)# default-router 192.168.1.190
 
 
-## Test ve Doğrulama
 
-- Tüm cihazlar kendi VLAN'ları içerisinde doğru şekilde IP adresi aldı.
-- VLAN’lar arası ping testleri başarılı şekilde tamamlandı.
-- Kablosuz cihazlar Access Point'ler aracılığıyla ağa başarıyla bağlandı.
 - 
 
 
