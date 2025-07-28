@@ -32,7 +32,6 @@
 
 ### 1. VLAN Tanımlama
 
-```bash
 Switch(config)# vlan 10
 Switch(config-vlan)# name Admin_IT
 
@@ -45,7 +44,7 @@ Switch(config-vlan)# name CS_Reception
 
 ### 2. Portları VLAN’lara Atama
 
-```bash
+
 Switch(config)# interface range fa0/1-4
 Switch(config-if-range)# switchport mode access
 Switch(config-if-range)# switchport access vlan 10
