@@ -93,6 +93,7 @@ Router(dhcp-config)# default-router 192.168.1.190
 - Tüm cihazlar kendi VLAN'ları içerisinde doğru şekilde IP adresi aldı.
 - VLAN’lar arası ping testleri başarılı şekilde tamamlandı.
 - Kablosuz cihazlar Access Point'ler aracılığıyla ağa başarıyla bağlandı.
+- 
 
 
 
